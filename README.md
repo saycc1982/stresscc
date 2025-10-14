@@ -61,8 +61,18 @@ YOUR_USER_ID
 
 ### 4. 主要参数说明
 
+执行命令打印出参数菜单
+```bash
+./stresscc
+```
+查看程序版本
+```bash
+./stresscc -v
+```
+
+
 #### 必选参数
-- `-url string`: 目标网站URL（如 'https://example.com'）
+- `-url string`: 目标网站URL如 https://example.com
 - `-telegram-config string`: Telegram配置文件路径（远程控制模式）
 
 #### 代理相关参数
@@ -114,6 +124,10 @@ echo "987654321" >> telegram.conf
 启动Telegram远程控制：
 ```bash
 ./stresscc -telegram-config ./telegram.conf
+```
+*** 注意，如要长驻背景运行，必须要永久生效ulimit 才可提升系统连接数，请先执行以下命令，再重新登入ssh 确保生效
+```bash
+curl -o ulimit.sh https://raw.githubusercontent.com/saycc1982/stresscc/refs/heads/main/ulimit.sh && bash ulimit.sh
 ```
 如要长驻运行，防止因登出ssh 后断开telegram bot,请用命令（必需先执行命令ulimit -n 1024000 及确保bot id及user id 正确) 
 ```bash
